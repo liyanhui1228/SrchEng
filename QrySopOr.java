@@ -48,4 +48,10 @@ public class QrySopOr extends QrySop {
     }
   }
 
+  @Override
+  public double getRankedScore() {
+	// TODO Auto-generated method stub
+	return 0;
+  }
+
 }

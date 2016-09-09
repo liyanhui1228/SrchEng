@@ -36,4 +36,6 @@ public abstract class QrySop extends Qry {
       q_i.initialize (r);
     }
   }
+  
+  public abstract double getRankedScore();
 }
