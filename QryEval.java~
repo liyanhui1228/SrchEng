@@ -31,9 +31,11 @@ public class QryEval {
 
   private static final String[] TEXT_FIELDS =
     { "body", "title", "url", "inlink" };
-
+<<<<<<< HEAD
+  
   private static PrintWriter writer;
   
+=======
 >>>>>>> 3dd971ceadbbc25a0981c9c275eae4df30e6c834
 
 
@@ -62,10 +64,13 @@ public class QryEval {
     }
 
     Map<String, String> parameters = readParameterFile (args[0]);
+<<<<<<< HEAD
     
     // Initialize the PrintWriter
     writer = new PrintWriter(parameters.get("trecEvalOutputPath"), "UTF-8");
     writer.println("QueryID\tQ0\tDocID\tRank\tScore\tRunID");
+=======
+>>>>>>> 3dd971ceadbbc25a0981c9c275eae4df30e6c834
 
     //  Open the index and initialize the retrieval model.
 
@@ -80,7 +85,10 @@ public class QryEval {
     
     timer.stop ();
     System.out.println ("Time:  " + timer);
+<<<<<<< HEAD
     writer.close();
+=======
+>>>>>>> 3dd971ceadbbc25a0981c9c275eae4df30e6c834
   }
 
   /**
@@ -96,11 +104,18 @@ public class QryEval {
     String modelString = parameters.get ("retrievalAlgorithm").toLowerCase();
 
     if (modelString.equals("unrankedboolean")) {
+<<<<<<< HEAD
         model = new RetrievalModelUnrankedBoolean();
     } else if (modelString.equals("rankedboolean")) {
     	model = new RetrievalModelRankedBoolean();
     } else {
     	throw new IllegalArgumentException
+=======
+      model = new RetrievalModelUnrankedBoolean();
+    }
+    else {
+      throw new IllegalArgumentException
+>>>>>>> 3dd971ceadbbc25a0981c9c275eae4df30e6c834
         ("Unknown retrieval model " + parameters.get("retrievalAlgorithm"));
     }
       
@@ -230,6 +245,7 @@ public class QryEval {
    * @throws IOException Error accessing the Lucene index.
    */
   static void printResults(String queryName, ScoreList result) throws IOException {
+<<<<<<< HEAD
 	  String output = "";
 	  if (result.size() < 1) {
 		  output = queryName + "\tQ0\tdummy\t1\t0\trun-1";
@@ -245,6 +261,18 @@ public class QryEval {
     		  writer.println(output);
     	  }
       }
+=======
+
+    System.out.println(queryName + ":  ");
+    if (result.size() < 1) {
+      System.out.println("\tNo results.");
+    } else {
+      for (int i = 0; i < result.size(); i++) {
+        System.out.println("\t" + i + ":  " + Idx.getExternalDocid(result.getDocid(i)) + ", "
+            + result.getDocidScore(i));
+      }
+    }
+>>>>>>> 3dd971ceadbbc25a0981c9c275eae4df30e6c834
   }
 
   /**
