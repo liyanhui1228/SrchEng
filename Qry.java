@@ -68,7 +68,7 @@ import java.util.*;
  */
 public abstract class Qry {
 
-  //  --------------- Constants and variables ---------------------
+  //  ------------------- Constants and variables ---------------------
 
   /**
    *  An invalid internal document id.
